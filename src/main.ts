@@ -29,7 +29,7 @@ async function bootstrap() {
   app.setGlobalPrefix('/api');
 
   await app.listen(port, () => {
-    Logger.log(`service is running on port ${port}`);
+    Logger.log(`server is running on port ${port}`);
   });
 }
 bootstrap();

@@ -4,6 +4,7 @@ import { configuration } from '@App/config/configuration';
 import { validate } from '@App/config/env.validation';
 import { AppController } from '@App/app.controller';
 import { AppService } from '@App/app.service';
+import { MarketStackModule } from '@App/modules/market-stack/market-stack.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { AppService } from '@App/app.service';
       load: [configuration],
       validate,
     }),
+    MarketStackModule,
   ],
   controllers: [AppController],
   providers: [AppService],

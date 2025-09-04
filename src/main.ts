@@ -3,9 +3,10 @@ import { ConfigService } from '@nestjs/config';
 import { AppModule } from '@App/app.module';
 import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
 import { json, urlencoded } from 'express';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const configService = app.get(ConfigService);
 
   const port = Number(configService.get('app.port') ?? process.env.SERVER_PORT);

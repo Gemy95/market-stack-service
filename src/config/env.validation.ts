@@ -1,5 +1,11 @@
 import { plainToInstance } from 'class-transformer';
-import { IsEnum, IsNumber, validateSync } from 'class-validator';
+import {
+  IsEnum,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  validateSync,
+} from 'class-validator';
 
 export enum Environment {
   LOCAL = 'local',
@@ -10,11 +16,21 @@ export enum Environment {
 }
 
 class EnvironmentVariables {
+  @IsNotEmpty()
   @IsEnum(Environment)
   NODE_ENV: Environment;
 
+  @IsNotEmpty()
   @IsNumber()
   SERVER_PORT: number;
+
+  @IsNotEmpty()
+  @IsString()
+  MARKET_STACK_BASE_URL: string;
+
+  @IsNotEmpty()
+  @IsString()
+  MARKET_STACK_API_KEY: string;
 }
 
 export function validate(config: Record<string, unknown>) {

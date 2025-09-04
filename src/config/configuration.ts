@@ -3,6 +3,7 @@ const DEFAULT_SERVER_PORT = 5000;
 export interface Configuration {
   app: AppSetting;
   services: Services;
+  redis: Redis;
 }
 
 export interface AppSetting {
@@ -19,6 +20,13 @@ export interface MarketStack {
   apiKey: string;
 }
 
+export interface Redis {
+  host: string;
+  port: number;
+  username?: string;
+  password?: string;
+}
+
 export const configuration = (): Configuration => {
   const defaultConfiguration: Configuration = {
     app: {
@@ -30,6 +38,12 @@ export const configuration = (): Configuration => {
         url: process.env.MARKET_STACK_BASE_URL,
         apiKey: process.env.MARKET_STACK_API_KEY,
       },
+    },
+    redis: {
+      host: process.env.REDIS_HOST,
+      port: +process.env.REDIS_PORT,
+      username: process.env.REDIS_USERNAME,
+      password: process.env.REDIS_PASSWORD,
     },
   };
   return defaultConfiguration;

@@ -3,6 +3,7 @@ import {
   IsEnum,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
   validateSync,
 } from 'class-validator';
@@ -31,6 +32,22 @@ class EnvironmentVariables {
   @IsNotEmpty()
   @IsString()
   MARKET_STACK_API_KEY: string;
+
+  @IsNotEmpty()
+  @IsString()
+  REDIS_HOST: string;
+
+  @IsNotEmpty()
+  @IsString()
+  REDIS_PORT: string;
+
+  @IsOptional()
+  @IsString()
+  REDIS_USERNAME?: string;
+
+  @IsOptional()
+  @IsString()
+  REDIS_PASSWORD?: string;
 }
 
 export function validate(config: Record<string, unknown>) {

@@ -35,13 +35,21 @@ async function bootstrap() {
   app.useGlobalFilters(new CatchEverythingFilter(httpAdapterHost));
 
   if (configService.get('app.env') !== Environment.PRODUCTION) {
-    const config = new DocumentBuilder().setTitle('Market Stack Apis').setVersion('1.0').addTag('Market Stack').build();
+    const config = new DocumentBuilder()
+      .setTitle('Market Stack Apis')
+      .setVersion('1.0')
+      .addTag('Market Stack')
+      .addServer(`http://localhost:${port}`)
+      .build();
     const documentFactory = () => SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('api', app, documentFactory);
+    SwaggerModule.setup('docs', app, documentFactory);
   }
 
-  await app.listen(port, () => {
-    Logger.log(`server is running on port ${port}`);
+  await app.listen(port, '0.0.0.0', () => {
+    Logger.log(`🚀 Server is running on http://localhost:${port}`);
+    if (configService.get('app.env') !== Environment.PRODUCTION) {
+      Logger.log(`📖 Swagger docs available at http://localhost:${port}/docs`);
+    }
   });
 }
 bootstrap();

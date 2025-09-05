@@ -7,6 +7,6 @@ import { PassportModule } from '@nestjs/passport';
 @Module({
   imports: [PassportModule, ConfigModule],
   providers: [AuthService, ApiKeyStrategy],
-  exports: [ApiKeyStrategy]
+  exports: [ApiKeyStrategy],
 })
 export class AuthModule {}

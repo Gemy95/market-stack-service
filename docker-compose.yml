@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: nestjs-app
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+    environment:
+      NODE_ENV: development
+      REDIS_HOST: redis
+      REDIS_PORT: 6381
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis-cache
+    restart: always
+    ports:
+      - "6381:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:

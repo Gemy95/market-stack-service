@@ -10,3 +10,11 @@ export interface IItem {
   symbol: string;
   close: number;
 }
+
+export interface IUpdateHoldingResponse {
+  id: string;
+  attributes: {
+    userId: string;
+    holdings: IHolding[];
+  };
+}

@@ -137,7 +137,6 @@ export class MarketStackService {
         },
       };
     } catch (error) {
-      console.log('error=', error);
       Logger.error(`Error fetching portfolio for ${userId}`, error.message);
       throw error;
     }

@@ -78,7 +78,7 @@ export class MarketStackService {
         const cachedPrice = await this.getUserHoldingPrice(userId, holding.ticker);
 
         if (typeof cachedPrice === 'number') {
-          Logger.log(`Cache hit: ${holding.ticker} = ${cachedPrice}`);
+          Logger.log(`Cache User ${userId} hit: ${holding.ticker} = ${cachedPrice}`);
           priceMap[holding.ticker] = cachedPrice;
         } else {
           tickersToFetch.push(holding.ticker);
@@ -100,7 +100,7 @@ export class MarketStackService {
                 ticker: item.symbol,
                 price: item.close,
               });
-              Logger.log(`Fetched from API: ${item.symbol} = ${item.close}`);
+              Logger.log(`Fetched UserId ${userId} from API: ${item.symbol} = ${item.close}`);
             }
           }
         } catch (apiError) {

@@ -9,6 +9,7 @@ export interface Configuration {
 export interface AppSetting {
   env: string;
   port: number;
+  apiKey: string;
 }
 
 export interface Services {
@@ -32,6 +33,7 @@ export const configuration = (): Configuration => {
     app: {
       env: process.env.NODE_ENV,
       port: parseInt(process.env.SERVER_PORT, 10) || DEFAULT_SERVER_PORT,
+      apiKey: process.env.API_KEY,
     },
     services: {
       marketStack: {

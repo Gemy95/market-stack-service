@@ -61,6 +61,10 @@ class EnvironmentVariables {
   @IsNotEmpty()
   @IsString()
   COVERAGE_THRESHOLD_BRANCHES: string;
+
+  @IsNotEmpty()
+  @IsString()
+  API_KEY: string;
 }
 
 export function validate(config: Record<string, unknown>) {

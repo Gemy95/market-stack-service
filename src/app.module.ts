@@ -9,6 +9,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { createKeyv } from '@keyv/redis';
 import { Keyv } from 'keyv';
 import { CacheableMemory } from 'cacheable';
+import { AuthModule } from '@App/modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { CacheableMemory } from 'cacheable';
         ],
       }),
     }),
+    AuthModule,
     MarketStackModule,
   ],
   controllers: [AppController],

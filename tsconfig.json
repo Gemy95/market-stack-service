@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
+    "module": "node16",
+    "esModuleInterop": true,
+    "declaration": false,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -17,8 +18,18 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
+    "isolatedModules": true,
+    "types": ["@types/node", "@types/jest"],
     "paths": {
       "@App/*": ["src/*"]
     },
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "alwaysStrict": true,
+    "allowUnreachableCode": false,
+    "resolveJsonModule": true,
+    "moduleResolution": "node16"
   }
 }

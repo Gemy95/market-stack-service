@@ -27,7 +27,7 @@ import { CacheableMemory } from 'cacheable';
             store: new CacheableMemory(),
           }),
           createKeyv(
-            `redis://${configService.get<string>('REDIS_USERNAME')}:${configService.get<string>('REDIS_PASSWORD')}@${configService.get<string>('REDIS_HOST')}:${configService.get<number>('REDIS_PORT')}`,
+            `redis://${configService.get<string>('REDIS_USERNAME')}:${configService.get<string>('REDIS_PASSWORD')}@${configService.get<string>('REDIS_HOST')}:${configService.get<number>('REDIS_PORT')}`
           ),
         ],
       }),

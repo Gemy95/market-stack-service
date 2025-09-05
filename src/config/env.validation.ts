@@ -1,12 +1,5 @@
 import { plainToInstance } from 'class-transformer';
-import {
-  IsEnum,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-  validateSync,
-} from 'class-validator';
+import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, validateSync } from 'class-validator';
 
 export enum Environment {
   LOCAL = 'local',
@@ -48,6 +41,26 @@ class EnvironmentVariables {
   @IsOptional()
   @IsString()
   REDIS_PASSWORD?: string;
+
+  @IsNotEmpty()
+  @IsString()
+  COVERAGE: string;
+
+  @IsNotEmpty()
+  @IsString()
+  COVERAGE_THRESHOLD_FUNCTIONS: string;
+
+  @IsNotEmpty()
+  @IsString()
+  COVERAGE_THRESHOLD_LINES: string;
+
+  @IsNotEmpty()
+  @IsString()
+  COVERAGE_THRESHOLD_STATEMENTS: string;
+
+  @IsNotEmpty()
+  @IsString()
+  COVERAGE_THRESHOLD_BRANCHES: string;
 }
 
 export function validate(config: Record<string, unknown>) {

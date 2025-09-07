@@ -19,22 +19,60 @@
     <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+## Implementation Choice
+
+For Kiwi’s wealth management service as start product, we can Start with End-of-Day Data → solid, cost-efficient, investor-friendly.
+
+In future we can use Intraday Data later as an upgrade ("Live portfolio tracking" for premium accounts).
+
+# Implemented Endpoints
 
 ```bash
-$ yarn install
+$ [PUT] /api/v1/market-stack/:userId/holdings
+to update user holdings
+
+$ [GET] /api/v1/market-stack/:userId/portfolio
+to fetch user portfolio
 ```
 
-## Running the app
+with using Redis for caching data (cache manage module)
+
+# Prepared Env Variables
 
 ```bash
+# env variables
+$ copy .env.example to new .env file in root of project
+```
+
+# Running App By Docker Compose
+
+```bash
+# build docker
+$ docker compose up --build
+
+# run in detached mode
+$ docker compose up -d
+```
+
+## Swagger Apis
+
+```bash
+# swagger
+Go To Url http://localhost:5000/docs
+and use api key that exists in .env
+```
+
+## Running App Manually
+
+```bash
+# install dependencies
+$ yarn install
+
 # development
 $ yarn run start
 
@@ -57,17 +95,3 @@ $ yarn run test:e2e
 # test coverage
 $ yarn run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
